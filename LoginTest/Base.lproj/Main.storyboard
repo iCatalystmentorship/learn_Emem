@@ -157,6 +157,19 @@
                                                     <action selector="forgotPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XIL-9T-igO"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gRD-8M-YHl" customClass="GIDSignInButton">
+                                                <rect key="frame" x="87" y="641" width="240" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XtH-Qn-Yct">
+                                                <rect key="frame" x="174" y="714" width="67" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Facebook"/>
+                                                <connections>
+                                                    <action selector="facebookSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cf4-iN-sWD"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.99215686274509807" green="0.36470588235294116" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -198,6 +211,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="googleSignInButton" destination="gRD-8M-YHl" id="ucE-gR-UYj"/>
                         <outlet property="passwordTextField" destination="oKx-Yq-0gk" id="Oxw-KM-lcR"/>
                         <outlet property="scrollView" destination="49c-ZN-k1i" id="vVb-Tc-luz"/>
                         <outlet property="userNameTextField" destination="tSv-K9-6Od" id="Whj-zO-Hlp"/>
