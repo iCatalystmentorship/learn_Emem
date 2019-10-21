@@ -8,13 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userNameTextField: DesignableUITextField!
     @IBOutlet weak var passwordTextField: DesignableUITextField!
+    
+    var activeTextField: DesignableUITextField?
+    var lastOffSet = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.userNameTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     @IBAction func login(_ sender: Any) {
@@ -35,5 +42,19 @@ class ViewController: UIViewController {
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         show(alertVC, sender: nil)
     }
+    
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        activeTextField = textField as DesignableUITextField
+//        lastOffSet = self.scrollView.contentOffset
+//        return true
+//    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        activeTextField = nil
+        return true
+    }
+    
 }
 
