@@ -53,8 +53,8 @@ class DesignableUITextField: UITextField {
     func updateView() {
         if let image = leftImage {
             leftViewMode = UITextField.ViewMode.always
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 75, height: 75))
-            imageView.contentMode = .scaleAspectFit
+            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 85, height: 75))
+            imageView.contentMode = .scaleToFill
             imageView.clipsToBounds = true
             imageView.image = image
             // Note: In order for your image to use the tint color, you have to select the image in the Assets.xcassets and change the "Render As" property to "Template Image".

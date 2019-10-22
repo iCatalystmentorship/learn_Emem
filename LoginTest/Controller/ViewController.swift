@@ -17,22 +17,12 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
             if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                print("The user has not signed in before or they have since signed out.")
+                self.showAlertMessge(message: "The user has not signed in before or they have since signed out.")
             } else {
                 print("\(error.localizedDescription)")
             }
             return
         }
-        // Perform any operations on signed in user here.
-        let userId = user.userID                  // For client-side use only!
-        let idToken = user.authentication.idToken // Safe to send to the server
-        let fullName = user.profile.name
-        let givenName = user.profile.givenName
-        let familyName = user.profile.familyName
-        let email = user.profile.email
-        // ...
-        
-        
         
     }
     
@@ -41,8 +31,8 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     @IBOutlet weak var passwordTextField: DesignableUITextField!
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
-    var activeTextField: DesignableUITextField?
-    var lastOffSet = 0
+    var activeTextField: UITextField?
+    var lastOffSet:CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +76,11 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
         show(alertVC, sender: nil)
     }
     
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        activeTextField = textField as DesignableUITextField
-//        lastOffSet = self.scrollView.contentOffset
-//        return true
-//    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        activeTextField = textField
+        lastOffSet = self.scrollView.contentOffset
+        return true
+    }
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -102,11 +92,10 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     func signIn(_ email: String, _ password: String){
         
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-            guard let strongSelf = self else { return }
+            guard self != nil else { return }
         
             // ...
-            if let user = authResult?.user {
-//                self?.showAlertMessge(message: "Login successful 👍")
+            if (authResult?.user) != nil {
                 self?.moveToWelcomeScreen()
             } else {
                 self?.showAlertMessge(message: "Login failed 😢")
@@ -126,11 +115,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     }
     
     
-    @IBAction func googleSignIn(_ sender: Any) {
-        
-    }
-    
-    
     func loginManagerDidComplete(_ result: LoginResult) {
         switch result {
         case .cancelled:
@@ -147,7 +131,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
                     self.showAlertMessge(message: "Couldn't sign in to firebase. \(error)")
                     return
                 }
-//                self.showAlertMessge(message: "Firebase facebook sign in successful")
                 self.moveToWelcomeScreen()
             }
         }
@@ -157,5 +140,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     func moveToWelcomeScreen(){
         performSegue(withIdentifier: "welcome", sender: self)
     }
+    
 }
 
