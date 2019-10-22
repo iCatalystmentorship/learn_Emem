@@ -266,7 +266,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to DatingMatch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17v-qk-ZHv">
-                                <rect key="frame" x="32" y="156" width="204.5" height="32"/>
+                                <rect key="frame" x="32" y="343" width="204.5" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Xjn-KP-PHt"/>
                                 </constraints>
@@ -275,7 +275,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="welcome" translatesAutoresizingMaskIntoConstraints="NO" id="pUd-aH-f2F">
-                                <rect key="frame" x="32" y="108" width="350" height="16"/>
+                                <rect key="frame" x="32" y="108" width="350" height="203"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -286,6 +286,7 @@
                             <constraint firstItem="pUd-aH-f2F" firstAttribute="leading" secondItem="RdI-fB-lgq" secondAttribute="leading" constant="32" id="AL7-O1-nLy"/>
                             <constraint firstItem="SOk-ff-1Qf" firstAttribute="centerX" secondItem="RdI-fB-lgq" secondAttribute="centerX" id="Fhx-oq-uqk"/>
                             <constraint firstItem="SOk-ff-1Qf" firstAttribute="centerY" secondItem="RdI-fB-lgq" secondAttribute="centerY" id="dqT-DA-TeG"/>
+                            <constraint firstItem="RdI-fB-lgq" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="17v-qk-ZHv" secondAttribute="trailing" symbolic="YES" id="ezG-QV-I5P"/>
                             <constraint firstItem="17v-qk-ZHv" firstAttribute="top" secondItem="pUd-aH-f2F" secondAttribute="bottom" constant="32" id="kUr-pQ-dcp"/>
                             <constraint firstItem="pUd-aH-f2F" firstAttribute="centerX" secondItem="RdI-fB-lgq" secondAttribute="centerX" id="yBc-pD-UQ7"/>
                         </constraints>
@@ -294,7 +295,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SwZ-T5-Rp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1039" y="110"/>
+            <point key="canvasLocation" x="1037.68115942029" y="109.82142857142857"/>
         </scene>
     </scenes>
     <resources>
