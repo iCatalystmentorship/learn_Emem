@@ -15,6 +15,23 @@ import FacebookLogin
 class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        // Perform any operations on signed in user here.
+        let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullName = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let email = user.profile.email
+        // ...
+        
         
         
     }
@@ -38,9 +55,16 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
         // Automatically sign in the user if signed in already
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
-        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        print("View will appear!")
+        let user = GIDSignIn.sharedInstance()?.currentUser
+        if user != nil {
+            print("user is not nil")
+            self.moveToWelcomeScreen()
+        }
+    }
     @IBAction func login(_ sender: Any) {
         let email = userNameTextField.text ?? ""
         let password = passwordTextField.text ?? ""
@@ -57,7 +81,7 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
     
     func showAlertMessge(message: String) {
-        let alertVC = UIAlertController(title: "🆕 Message", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Message 🆕", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         show(alertVC, sender: nil)
     }
@@ -82,7 +106,8 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
         
             // ...
             if let user = authResult?.user {
-                self?.showAlertMessge(message: "Login successful 👍")
+//                self?.showAlertMessge(message: "Login successful 👍")
+                self?.moveToWelcomeScreen()
             } else {
                 self?.showAlertMessge(message: "Login failed 😢")
             }
@@ -107,7 +132,6 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
     
     
     func loginManagerDidComplete(_ result: LoginResult) {
-        let alertController: UIAlertController
         switch result {
         case .cancelled:
             showAlertMessge(message: "User cancelled login.")
@@ -116,8 +140,22 @@ class ViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
             showAlertMessge(message: "Login failed with error \(error)")
             
         case .success(let grantedPermissions, _, _):
-            showAlertMessge(message: "Login succeeded with granted permissions: \(grantedPermissions)")
+//            showAlertMessge(message: "Login succeeded with granted permissions: \(grantedPermissions)")
+            let credential = FacebookAuthProvider.credential(withAccessToken: AccessToken.current!.tokenString)
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    self.showAlertMessge(message: "Couldn't sign in to firebase. \(error)")
+                    return
+                }
+//                self.showAlertMessge(message: "Firebase facebook sign in successful")
+                self.moveToWelcomeScreen()
+            }
         }
+    }
+    
+    
+    func moveToWelcomeScreen(){
+        performSegue(withIdentifier: "welcome", sender: self)
     }
 }
 

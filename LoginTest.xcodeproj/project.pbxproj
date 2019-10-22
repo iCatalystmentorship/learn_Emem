@@ -16,6 +16,7 @@
 		B6749C71234E8EBC00AB51A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6749C6F234E8EBC00AB51A0 /* LaunchScreen.storyboard */; };
 		B6749C7A234EA3AD00AB51A0 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749C79234EA3AD00AB51A0 /* RoundButton.swift */; };
 		B6749C7C234EB5DF00AB51A0 /* DesignableUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6749C7B234EB5DF00AB51A0 /* DesignableUITextField.swift */; };
+		B6B1E552235F18D2005890A5 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B1E551235F18D2005890A5 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		B6749C72234E8EBC00AB51A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6749C79234EA3AD00AB51A0 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		B6749C7B234EB5DF00AB51A0 /* DesignableUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignableUITextField.swift; sourceTree = "<group>"; };
+		B6B1E551235F18D2005890A5 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F128E0E64FABECFE4B9797D5 /* Pods-LoginTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoginTest.debug.xcconfig"; path = "Target Support Files/Pods-LoginTest/Pods-LoginTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,13 +77,11 @@
 		B6749C65234E8EB900AB51A0 /* LoginTest */ = {
 			isa = PBXGroup;
 			children = (
+				B6B1E550235F1869005890A5 /* Assets */,
+				B6B1E54F235F184B005890A5 /* Controller */,
 				B60232F8235E30DB00980F7A /* GoogleService-Info.plist */,
 				B6749C78234EA39300AB51A0 /* View */,
 				B6749C66234E8EB900AB51A0 /* AppDelegate.swift */,
-				B6749C68234E8EB900AB51A0 /* ViewController.swift */,
-				B6749C6A234E8EB900AB51A0 /* Main.storyboard */,
-				B6749C6D234E8EBC00AB51A0 /* Assets.xcassets */,
-				B6749C6F234E8EBC00AB51A0 /* LaunchScreen.storyboard */,
 				B6749C72234E8EBC00AB51A0 /* Info.plist */,
 			);
 			path = LoginTest;
@@ -94,6 +94,25 @@
 				B6749C7B234EB5DF00AB51A0 /* DesignableUITextField.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B6B1E54F235F184B005890A5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B6749C68234E8EB900AB51A0 /* ViewController.swift */,
+				B6B1E551235F18D2005890A5 /* WelcomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		B6B1E550235F1869005890A5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				B6749C6A234E8EB900AB51A0 /* Main.storyboard */,
+				B6749C6D234E8EBC00AB51A0 /* Assets.xcassets */,
+				B6749C6F234E8EBC00AB51A0 /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		BBECAE3E378FE7730ADB6F9C /* Pods */ = {
@@ -240,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6749C7A234EA3AD00AB51A0 /* RoundButton.swift in Sources */,
+				B6B1E552235F18D2005890A5 /* WelcomeViewController.swift in Sources */,
 				B6749C69234E8EB900AB51A0 /* ViewController.swift in Sources */,
 				B6749C67234E8EB900AB51A0 /* AppDelegate.swift in Sources */,
 				B6749C7C234EB5DF00AB51A0 /* DesignableUITextField.swift in Sources */,
